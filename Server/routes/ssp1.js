@@ -3,6 +3,16 @@ var router = express.Router();
 var db = require('../database');
 
 router.get('/getAds', function (req, res, next) {
+  db.all('SELECT * FROM ads ORDER BY RANDOM() LIMIT 2', [], (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.status(200).json({ rows });
+  });
+});
+
+router.get('/listAds', function (req, res, next) {
   db.all('SELECT * FROM ads', [], (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
