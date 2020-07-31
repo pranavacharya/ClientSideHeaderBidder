@@ -1,5 +1,3 @@
-const BASEURL = 'https://client-header-bidder-server.herokuapp.com';
-
 function ssp1() {
   fetch(BASEURL + `/ssp1/getAds`)
     .then(function (response) {
