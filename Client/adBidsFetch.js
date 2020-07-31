@@ -1,5 +1,7 @@
+const BASEURL = 'https://client-header-bidder-server.herokuapp.com';
+
 function ssp1() {
-  fetch(`http://localhost:3000/ssp1/getAds`)
+  fetch(BASEURL + `/ssp1/getAds`)
     .then(function (response) {
       return response.json();
     })
@@ -11,7 +13,7 @@ function ssp1() {
 }
 
 function ssp2() {
-  fetch(`http://localhost:3000/ssp2/getAds`)
+  fetch(BASEURL + `/ssp2/getAds`)
     .then(function (response) {
       return response.json();
     })
