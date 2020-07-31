@@ -4,7 +4,7 @@ var db = require('../database');
 
 router.get('/getAds', function (req, res, next) {
   db.all(
-    'SELECT * FROM ads WHERE vendor = "ssp1" ORDER BY RANDOM() LIMIT 4',
+    'SELECT * FROM ads WHERE vendor = "ssp2" ORDER BY RANDOM() LIMIT 4',
     [],
     (err, rows) => {
       if (err) {
@@ -17,7 +17,7 @@ router.get('/getAds', function (req, res, next) {
 });
 
 router.get('/listAds', function (req, res, next) {
-  db.all('SELECT * FROM ads WHERE vendor = "ssp1"', [], (err, rows) => {
+  db.all('SELECT * FROM ads WHERE vendor = "ssp2"', [], (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
       return;
