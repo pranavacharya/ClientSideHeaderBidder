@@ -4,6 +4,8 @@ var selected = [];
 
 const threshold = 1000;
 
+const BASEURL = 'https://client-header-bidder-server.herokuapp.com';
+
 function findHighestBidderAds() {
   let highestbid = 0;
   let secondHighestbid = 0;
@@ -56,7 +58,7 @@ function recordAnalytics(ad) {
   } else {
     return;
   }
-  fetch(`http://localhost:3000/analytics/recordClick/` + index)
+  fetch(BASEURL + `/analytics/recordClick/` + index)
     .then(function (response) {
       return response.json();
     })
