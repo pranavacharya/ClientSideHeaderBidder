@@ -6,7 +6,7 @@ function ssp1() {
       return response.json();
     })
     .then(function (json) {
-      json.rows.forEach((element) => {
+      json.ads.forEach((element) => {
         ads.push(element);
       });
     });
@@ -18,7 +18,7 @@ function ssp2() {
       return response.json();
     })
     .then(function (json) {
-      json.rows.forEach((element) => {
+      json.ads.forEach((element) => {
         ads.push(element);
       });
     });

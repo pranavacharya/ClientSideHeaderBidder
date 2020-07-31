@@ -46,3 +46,21 @@ window.onload = (event) => {
     publishAds();
   }, threshold);
 };
+
+function recordAnalytics(ad) {
+  let index;
+  if (ad.id == 'ad1') {
+    index = selected[0].id;
+  } else if (ad.id == 'ad2') {
+    index = selected[1].id;
+  } else {
+    return;
+  }
+  fetch(`http://localhost:3000/analytics/recordClick/` + index)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      return json;
+    });
+}

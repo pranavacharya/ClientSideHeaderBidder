@@ -4,14 +4,14 @@ var db = require('../database');
 
 router.get('/getAds', function (req, res, next) {
   db.all(
-    'SELECT * FROM ads WHERE vendor = "ssp1" ORDER BY RANDOM() LIMIT 4',
+    'SELECT id, cpi, url FROM ads WHERE vendor = "ssp1" ORDER BY RANDOM() LIMIT 4',
     [],
     (err, rows) => {
       if (err) {
         res.status(400).json({ error: err.message });
         return;
       }
-      res.status(200).json({ rows });
+      res.status(200).json({ ads: rows });
     }
   );
 });

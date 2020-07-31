@@ -11,6 +11,8 @@ var db = new sqlite3.Database('./db/database', (err) => {
           url text NOT NULL, 
           cpi INTEGER NOT NULL, 
           vendor VARCHAR(20) NOT NULL,
+          impression INTEGER NOT NULL DEFAULT 0,
+          bill INTEGER NOT NULL DEFAULT 0,
           UNIQUE(name, vendor) ON CONFLICT REPLACE
           )`,
         (err) => {
