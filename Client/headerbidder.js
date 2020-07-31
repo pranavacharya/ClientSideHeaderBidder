@@ -21,15 +21,23 @@ function findHighestBidderAds() {
       secondHighestBidIndex = index;
     }
   }
-  selected.push(ads[highestBidIndex]);
-  selected.push(ads[secondHighestBidIndex]);
+  if (highestBidIndex) {
+    selected.push(ads[highestBidIndex]);
+  }
+  if (secondHighestBidIndex) {
+    selected.push(ads[secondHighestBidIndex]);
+  }
 }
 
 function publishAds() {
-  let ad1 = document.getElementById('ad1');
-  ad1.setAttribute('href', selected[0].url);
-  let ad2 = document.getElementById('ad2');
-  ad2.setAttribute('href', selected[1].url);
+  if (selected.length > 0) {
+    let ad1 = document.getElementById('ad1');
+    ad1.setAttribute('href', selected[0].url);
+  }
+  if (selected.length > 1) {
+    let ad2 = document.getElementById('ad2');
+    ad2.setAttribute('href', selected[1].url);
+  }
 }
 
 window.onload = (event) => {
