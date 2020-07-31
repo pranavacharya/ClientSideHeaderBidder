@@ -10,4 +10,17 @@ function ssp1() {
     });
 }
 
+function ssp2() {
+  fetch(`http://localhost:3000/ssp2/getAds`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      json.rows.forEach((element) => {
+        ads.push(element);
+      });
+    });
+}
+
 ssp1();
+ssp2();
