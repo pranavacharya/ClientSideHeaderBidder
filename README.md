@@ -1,8 +1,8 @@
 # Client Side Header Bidder
 
-Project simulates client side header bidding. 
+Project simulates client side header bidding.
 
-Server acts as a mock ad-server and returns list of available ad with the respective CPI bid. 
+Server acts as a mock ad-server and returns list of available ad with the respective CPI bid.
 Client selects the ad with highest CPI bid among all the configured supply side platforms and displays it.
 
 ## Run
@@ -19,6 +19,7 @@ Run server
 `npm run start`
 
 ### Client
+
 Change directory to Client
 `cd Client`
 
@@ -27,7 +28,13 @@ Run client by opening index.html on browser
 ## Demo
 
 ### server
-[sample api to fetch ads](https://client-header-bidder-server.herokuapp.com/ssp1/getAds) 
+
+[sample api to fetch ads](https://client-header-bidder-server.herokuapp.com/ssp1/getAds)
+
+[supply side platfrom 1 - analytics report](https://client-header-bidder-server.herokuapp.com/analytics/report/ssp1)
+
+[supply side platfrom 2 - analytics report](https://client-header-bidder-server.herokuapp.com/analytics/report/ssp2)
 
 ### client
+
 https://clientbidderpoc.netlify.app
