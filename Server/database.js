@@ -9,10 +9,10 @@ var db = new sqlite3.Database('./db/database', (err) => {
           id INTEGER PRIMARY key autoincrement, 
           name VARCHAR(100) NOT NULL, 
           url text NOT NULL, 
-          cpi INTEGER NOT NULL, 
+          cpi REAL NOT NULL, 
           vendor VARCHAR(20) NOT NULL,
           impression INTEGER NOT NULL DEFAULT 0,
-          bill INTEGER NOT NULL DEFAULT 0,
+          bill REAL NOT NULL DEFAULT 0,
           UNIQUE(name, vendor) ON CONFLICT REPLACE
           )`,
         (err) => {

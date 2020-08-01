@@ -5,7 +5,7 @@ var db = require('../database');
 router.get('/recordClick/:id', function (req, res, next) {
   db.run(
     `UPDATE ads 
-    SET impression = impression + 1, bill = bill + CPI
+    SET impression = impression + 1, bill = bill + (CPI/1000)
     WHERE id = ?`,
     [req.params.id],
     (err) => {
