@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const router = express.Router();
 
 router.use('/analytics', require('./analytics'));
 router.use('/ssp1', require('./ssp1'));
