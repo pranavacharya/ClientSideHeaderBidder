@@ -1,51 +1,50 @@
-var ads = [];
-
-var selected = [];
-
+// gobal vars
+const ads = [];
+let availableAds = [];
+const selected = [];
 const threshold = 1000;
-
 const BASEURL = 'http://localhost:3000';
 
-function findHighestBidderAds() {
+function findHighestBidderAds(callback) {
   let highestbid = 0;
   let secondHighestbid = 0;
   let highestBidIndex;
   let secondHighestBidIndex;
-  for (let index = 0; index < ads.length; index++) {
-    if (ads[index].cpi > highestbid) {
-      highestbid = ads[index].cpi;
+  for (let index = 0; index < availableAds.length; index++) {
+    if (availableAds[index].cpi > highestbid) {
+      highestbid = availableAds[index].cpi;
       highestBidIndex = index;
     }
   }
-  for (let index = 0; index < ads.length; index++) {
-    if (ads[index].cpi > secondHighestbid && index != highestBidIndex) {
-      secondHighestbid = ads[index].cpi;
+  for (let index = 0; index < availableAds.length; index++) {
+    if (
+      availableAds[index].cpi > secondHighestbid &&
+      index !== highestBidIndex
+    ) {
+      secondHighestbid = availableAds[index].cpi;
       secondHighestBidIndex = index;
     }
   }
-  if (highestBidIndex) {
-    selected.push(ads[highestBidIndex]);
+  if (highestBidIndex != undefined) {
+    selected.push(availableAds[highestBidIndex]);
   }
-  if (secondHighestBidIndex) {
-    selected.push(ads[secondHighestBidIndex]);
+  if (secondHighestBidIndex != undefined) {
+    selected.push(availableAds[secondHighestBidIndex]);
   }
+  callback(selected.length);
 }
 
-function publishAds() {
-  if (selected.length > 0) {
-    let ad1 = document.getElementById('ad1');
-    ad1.setAttribute('href', selected[0].url);
-  }
-  if (selected.length > 1) {
-    let ad2 = document.getElementById('ad2');
-    ad2.setAttribute('href', selected[1].url);
+function publishAds(adsNo) {
+  for (let i = 0; i < adsNo; i++) {
+    let ad = document.getElementById('ad' + (i + 1));
+    ad.setAttribute('href', selected[i].url);
   }
 }
 
 window.onload = (event) => {
   setTimeout(function () {
-    findHighestBidderAds();
-    publishAds();
+    availableAds = [...ads];
+    findHighestBidderAds(publishAds);
   }, threshold);
 };
 
@@ -53,9 +52,9 @@ async function recordAnalytics(event) {
   const ad = event.currentTarget;
   event.preventDefault();
   let index;
-  if (ad.id == 'ad1') {
+  if (ad.id === 'ad1') {
     index = selected[0].id;
-  } else if (ad.id == 'ad2') {
+  } else if (ad.id === 'ad2') {
     index = selected[1].id;
   } else {
     return;
@@ -67,7 +66,7 @@ async function recordAnalytics(event) {
   } catch (error) {
     console.log('event not captured : ', error);
   }
-  var href = ad.getAttribute('href');
+  const href = ad.getAttribute('href');
   window.location.href = href;
 }
 
