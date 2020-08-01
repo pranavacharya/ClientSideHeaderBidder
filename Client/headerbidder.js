@@ -4,6 +4,8 @@ var selected = [];
 
 const threshold = 1000;
 
+const BASEURL = 'http://localhost:3000';
+
 function findHighestBidderAds() {
   let highestbid = 0;
   let secondHighestbid = 0;
@@ -47,7 +49,9 @@ window.onload = (event) => {
   }, threshold);
 };
 
-function recordAnalytics(ad) {
+async function recordAnalytics(event) {
+  const ad = event.currentTarget;
+  event.preventDefault();
   let index;
   if (ad.id == 'ad1') {
     index = selected[0].id;
@@ -56,11 +60,17 @@ function recordAnalytics(ad) {
   } else {
     return;
   }
-  fetch(`http://localhost:3000/analytics/recordClick/` + index)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      return json;
-    });
+  try {
+    let response = await reportClick(index);
+    let json = await response.json();
+    console.log(json.message);
+  } catch (error) {
+    console.log('event not captured : ', error);
+  }
+  var href = ad.getAttribute('href');
+  window.location.href = href;
+}
+
+function reportClick(index) {
+  return fetch(BASEURL + `/analytics/recordClick/` + index);
 }

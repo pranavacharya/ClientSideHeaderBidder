@@ -1,5 +1,3 @@
-const BASEURL = 'http://localhost:3000';
-
 function ssp1() {
   fetch(BASEURL + `/ssp1/getAds`)
     .then(function (response) {
