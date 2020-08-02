@@ -38,6 +38,8 @@ function publishAds(adsNo) {
   for (let i = 0; i < adsNo; i++) {
     let ad = document.getElementById('ad' + (i + 1));
     ad.setAttribute('href', selected[i].url);
+    let adimage = document.getElementById('ad' + (i + 1) + 'image');
+    adimage.setAttribute('src', './ad' + (i + 1) + '.PNG');
   }
 }
 
