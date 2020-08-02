@@ -31,6 +31,9 @@ Run client by opening `index.html` on browser
 
 [sample api to fetch ads](https://client-header-bidder-server.herokuapp.com/ssp1/getAds)
 
+
+##### Impressions and bill report of each SSP 
+
 [supply side platfrom 1 - analytics report](https://client-header-bidder-server.herokuapp.com/analytics/report/ssp1)
 
 [supply side platfrom 2 - analytics report](https://client-header-bidder-server.herokuapp.com/analytics/report/ssp2)
