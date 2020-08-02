@@ -8,7 +8,7 @@ function insertAds(db, name, url, CPI, vendor) {
       if (err) {
         console.log(err.message);
       } else {
-        console.log('inserted successfull');
+        console.log('inserted successfully');
       }
     }
   );
